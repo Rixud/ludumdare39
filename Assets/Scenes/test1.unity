@@ -108,22 +108,27 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &153146615 stripped
+--- !u!1 &37506132 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1219008038888586, guid: b8ace67bd4f6ec14e86b6d633a20dba1,
+  m_PrefabParentObject: {fileID: 1129938052292020, guid: b8ace67bd4f6ec14e86b6d633a20dba1,
     type: 2}
   m_PrefabInternal: {fileID: 817568596}
---- !u!135 &153146618
-SphereCollider:
+--- !u!143 &37506136
+CharacterController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 153146615}
+  m_GameObject: {fileID: 37506132}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &212380296
 Prefab:
@@ -163,10 +168,6 @@ Prefab:
     - target: {fileID: 4376040025642414, guid: 91dcaeff696ddaa4cb34cbcf9731de9e, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525123886878676, guid: 91dcaeff696ddaa4cb34cbcf9731de9e, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 51
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91dcaeff696ddaa4cb34cbcf9731de9e, type: 2}
