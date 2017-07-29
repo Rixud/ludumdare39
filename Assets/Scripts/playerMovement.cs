@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour {
 
     public float speed = 5;
+    public float increaseSpeedTime;
     public float playerAcceleration = 10;
     private Rigidbody playerRigidBody;
 
@@ -29,12 +30,18 @@ public class playerMovement : MonoBehaviour {
         {
             playerRigidBody.AddForce(transform.forward * playerAcceleration);
         }
-		
-	}
+
+        Debug.Log(playerRigidBody.velocity.z);
+    }
 
     void Update()
     {
-        //Debug.Log(playerRigidBody.velocity);
+        if (increaseSpeedTime < 0) // increment of 10% speed every 10 seconds
+        {
+            increaseSpeedTime = 10;
+            speed = speed * 1.1f;
+        }
 
+        increaseSpeedTime -= Time.deltaTime; 
     }
 }
