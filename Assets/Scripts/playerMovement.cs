@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour {
     public float speed = 5;
     public float increaseSpeedTime;
     public float playerAcceleration = 10;
-    private Rigidbody playerRigidBody;
+    private CharacterController playerController;
 
     public bool running;
 
@@ -16,22 +16,19 @@ public class playerMovement : MonoBehaviour {
 	void Start ()
     {
        
-        playerRigidBody = GetComponent<Rigidbody>();
+        playerController = GetComponent<CharacterController>();
     }
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        if (playerRigidBody.velocity.z > speed)
-        {
-             
-        }
-        if (playerRigidBody.velocity.z < speed)
-        {
-            playerRigidBody.AddForce(transform.forward * playerAcceleration);
-        }
+        playerController.Move((Vector3.forward *speed)* Time.deltaTime);
+        Debug.Log(speed);
 
-        Debug.Log(playerRigidBody.velocity.z);
+        if (!playerController.isGrounded)
+        {
+            playerController.Move((Vector3.down * speed) * Time.deltaTime);
+        }
     }
 
     void Update()
