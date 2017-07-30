@@ -13,8 +13,10 @@ public class PlayerMotor : MonoBehaviour {
     private float jumpPower = 600;
     public float energyLevel = 100;
     public int batteryEnergyIncrement = 20;
+    public int batteryEnergyDecrement = 10;
+    public float horizontalSpeed = 2.0f;
 
-    public Text energyText;
+    public Image healthBar;
 
 
     // Use this for initialization
@@ -31,13 +33,14 @@ public class PlayerMotor : MonoBehaviour {
     public void MovementController()
     {
         moveIndicator = Vector3.zero;
+        moveIndicator.x = Input.GetAxisRaw("Horizontal") * horizontalSpeed;
         if (!controller.isGrounded)
         {
             verticalAcceleration -= gForce * Time.deltaTime;
+            moveIndicator.x = 0.0f;
         }
         else
         {
-
             //player touching ground
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -49,7 +52,6 @@ public class PlayerMotor : MonoBehaviour {
             }
         }
         moveIndicator.y = verticalAcceleration;
-        moveIndicator.x = Input.GetAxisRaw("Horizontal") * playerSpeed;
         //when player enter a hole
         if (transform.position.y < 0.76)
         {
@@ -67,9 +69,21 @@ public class PlayerMotor : MonoBehaviour {
     public void EnergyController()
     {
         if (energyLevel == 0)
-            Destroy(this);
-        energyLevel -= Time.deltaTime;
-        energyText.text = ((int)energyLevel).ToString();
+            Destroy(this.gameObject);
+        energyLevel -= Time.deltaTime * 5;
+        healthBar.fillAmount = energyLevel / 100;
+        if (energyLevel > 60)
+        {
+            healthBar.color = new Color32(28, 242, 0, 255);
+        }
+        if (energyLevel < 60)
+        {
+            healthBar.color = new Color32(255, 249, 38, 255);
+        }
+        if (energyLevel < 25)
+        {
+            healthBar.color = new Color32(255, 0, 0, 255);
+        }
     }
 
     public void SetLevelSpeed(float mod)
@@ -77,7 +91,7 @@ public class PlayerMotor : MonoBehaviour {
         playerSpeed += mod;
     }
 
-    private float SetBatteryEnergyLevel (int amount)
+    private float PlusBatteryEnergyLevel (int amount)
     {
         if (energyLevel + amount >= 100)
             energyLevel = 100;
@@ -86,13 +100,27 @@ public class PlayerMotor : MonoBehaviour {
         return energyLevel;
     }
 
+    private float DecBatteryEnergyLevel (int amount)
+    {
+        if (energyLevel - amount >= 1)
+            energyLevel -= amount;
+        else
+            energyLevel = 0;
+            
+        return energyLevel;
+    }
+
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Battery")
         {
             Destroy(collision.gameObject);
-            SetBatteryEnergyLevel(batteryEnergyIncrement);
-            Debug.Log("Entro");
+            PlusBatteryEnergyLevel(batteryEnergyIncrement);
+        }
+        if (collision.gameObject.tag == "Obstacule")
+        {
+            Destroy(collision.gameObject);
+            DecBatteryEnergyLevel(batteryEnergyIncrement);
         }
     }
 

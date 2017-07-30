@@ -26,7 +26,7 @@ public class Score : MonoBehaviour {
             NextLevel();
 
         score += Time.deltaTime * actuaDifficultyLevel;
-        scoreText.text = ((int)score).ToString();
+        scoreText.text = "Score: " + ((int)score).ToString();
 	}
 
     void NextLevel()
