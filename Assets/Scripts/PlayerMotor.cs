@@ -51,7 +51,7 @@ public class PlayerMotor : MonoBehaviour {
         moveIndicator.y = verticalAcceleration;
         moveIndicator.x = Input.GetAxisRaw("Horizontal") * playerSpeed;
         //when player enter a hole
-        if (transform.position.y < 1.08)
+        if (transform.position.y < 0.76)
         {
             moveIndicator.z = 5;
             moveIndicator.y = -1000 * Time.deltaTime;
@@ -86,7 +86,7 @@ public class PlayerMotor : MonoBehaviour {
         return energyLevel;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Battery")
         {
@@ -94,7 +94,6 @@ public class PlayerMotor : MonoBehaviour {
             SetBatteryEnergyLevel(batteryEnergyIncrement);
             Debug.Log("Entro");
         }
-        
     }
 
 }
