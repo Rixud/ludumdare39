@@ -9,7 +9,8 @@ public class mapGeneration : MonoBehaviour {
     private Transform playerTransform;
     private float zSpawn = -8f;
     private float bridgeLength = 3f;
-    private int numberBridgeOnScreen = 20;
+    private int numberBridgeOnScreen = 200;
+    private int currentBridge = 0;
 
     private float zFloorStartDeleting = 10f;
 
@@ -41,12 +42,17 @@ public class mapGeneration : MonoBehaviour {
     private void SpawnBridge(int bridgeIndex = -1)
     {
         GameObject oc;
-        oc = Instantiate(floors[0]) as GameObject;
+        int nextBridgeIndex = Random.Range(0, floors.Length);
+        while (nextBridgeIndex == currentBridge)
+        {
+           nextBridgeIndex = Random.Range(0, floors.Length);
+        }
+        oc = Instantiate(floors[nextBridgeIndex]) as GameObject;
         oc.transform.SetParent(transform);
         oc.transform.position = Vector3.forward * zSpawn;
         zSpawn += bridgeLength;
         activeBridges.Add(oc);
-
+        currentBridge = nextBridgeIndex;
     }
 
     private void DeleteBridge()

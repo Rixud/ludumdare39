@@ -25,7 +25,7 @@ public class cameraMove : MonoBehaviour {
         moveVector = playerTransform.position + startOffset;
         moveVector.x = 0;
         moveVector.y = Mathf.Clamp(moveVector.y, 3, 5);
-        if (transition > 1.0f)
+        if (transition > 2.0f)
         {
             //after start animation is over
             transform.position = moveVector;
@@ -34,7 +34,8 @@ public class cameraMove : MonoBehaviour {
         {
             transform.position = Vector3.Lerp(moveVector + animationOffSet, moveVector, transition);
             transition += Time.deltaTime * 1 / animationDuration;
-            transform.LookAt(playerTransform.position + Vector3.up);
+            Vector3 posCam = new Vector3(0, playerTransform.position.y + 1, playerTransform.position.z);
+            transform.LookAt(posCam);
         }
 
         
