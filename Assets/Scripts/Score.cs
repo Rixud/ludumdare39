@@ -22,7 +22,7 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (!playerM.GetDeadFlag())
+        if (!playerM.GetDeadFlag() && !playerM.GetsStopScoreCount())
         {
             if (score >= scoreNeededNextLevel)
                 NextLevel();
@@ -32,7 +32,7 @@ public class Score : MonoBehaviour {
         }
         else
         {
-            
+            scoreText.text = "Score: " + ((int)score).ToString();
         }
 	}
 

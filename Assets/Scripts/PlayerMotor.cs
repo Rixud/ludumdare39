@@ -23,6 +23,8 @@ public class PlayerMotor : MonoBehaviour {
     public Image healthBar;
     private int speedColission = 2;
 
+    private bool stopScoreCount = false;
+
  
 
 
@@ -54,6 +56,7 @@ public class PlayerMotor : MonoBehaviour {
     {
         moveIndicator = Vector3.zero;
         moveIndicator.x = Input.GetAxisRaw("Horizontal") * horizontalSpeed;
+        //player Jumping
         if (!controller.isGrounded)
         {
             verticalAcceleration -= gForce * Time.deltaTime;
@@ -79,6 +82,7 @@ public class PlayerMotor : MonoBehaviour {
         {
             moveIndicator.z = 1;
             moveIndicator.y = -1000 * Time.deltaTime;
+            stopScoreCount = true;
             //controller.detectCollisions = !controller.detectCollisions;
         }
         else
@@ -164,4 +168,8 @@ public class PlayerMotor : MonoBehaviour {
         return deadFlag;
     }
 
+    public bool GetsStopScoreCount()
+    {
+        return stopScoreCount;
+    }
 }
