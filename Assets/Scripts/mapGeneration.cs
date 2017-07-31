@@ -15,7 +15,7 @@ public class mapGeneration : MonoBehaviour {
     private int currentBridge = 0;
     private Vector3[] batteryPositions;
 
-    private float zFloorStartDeleting = 50f;
+    private float zFloorStartDeleting = 75f;
 
     private List<GameObject> activeBridges;
     private List<GameObject> activeBatterys;
@@ -26,9 +26,9 @@ public class mapGeneration : MonoBehaviour {
         activeBatterys = new List<GameObject>();
         activeBridges = new List<GameObject>();
         batteryPositions = new Vector3[3];
-        batteryPositions[0] = new Vector3 (-1, 1, 0);
+        batteryPositions[0] = new Vector3 (-4, 1, 0);
         batteryPositions[1] = new Vector3(0, 1, 0);
-        batteryPositions[2] = new Vector3(1, 1, 0);
+        batteryPositions[2] = new Vector3(3, 1, 0);
         //first load of bridge floors
         for (int i = 0; i < numberBridgeOnScreen; i++)
         {
@@ -76,8 +76,9 @@ public class mapGeneration : MonoBehaviour {
             ba = Instantiate(battery) as GameObject;
             activeBatterys.Add(ba);
             ba.transform.SetParent(oc.transform);
+            
             ba.transform.position = oc.transform.position;
-            ba.transform.position += batteryPositions[Mathf.Abs(Random.Range(0, 2))];
+            ba.transform.position += batteryPositions[(int)Mathf.Abs(Random.Range(0f, 2.99f))];
         }
     }
 

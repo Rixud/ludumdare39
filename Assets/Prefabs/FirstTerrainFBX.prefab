@@ -54,6 +54,8 @@ GameObject:
   - component: {fileID: 65332390830323112}
   - component: {fileID: 65350702421088412}
   - component: {fileID: 65472679248497484}
+  - component: {fileID: 65587663817891888}
+  - component: {fileID: 65620294714212368}
   m_Layer: 0
   m_Name: FirstTerrainFBX
   m_TagString: Untagged
@@ -114,6 +116,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4962352343677170}
+  - component: {fileID: 65994035734940448}
   m_Layer: 0
   m_Name: Water1
   m_TagString: Untagged
@@ -174,6 +177,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4314555005392512}
+  - component: {fileID: 65573661722096794}
   m_Layer: 0
   m_Name: Water4
   m_TagString: Untagged
@@ -370,6 +374,54 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 99.98776, y: 0.8401985, z: 3.9082012}
   m_Center: {x: -0.08732605, y: 0.5443759, z: -8}
+--- !u!65 &65573661722096794
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780660895876234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7372866, y: 1, z: 2.8976176}
+  m_Center: {x: -1.097358, y: -0.000116928735, z: -1.1616832}
+--- !u!65 &65587663817891888
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242844755465786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.85395145, y: 15.879681, z: 0.9603996}
+  m_Center: {x: 10.209171, y: 6.901616, z: -8.113726}
+--- !u!65 &65620294714212368
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242844755465786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.85395145, y: 15.879681, z: 0.9603996}
+  m_Center: {x: -42.8, y: 6.7, z: 8.21}
+--- !u!65 &65994035734940448
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545920815548036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2531562, y: 1, z: 4.4089985}
+  m_Center: {x: 1.0353626, y: 5.9885014e-10, z: 0.51851636}
 --- !u!95 &95840167660636904
 Animator:
   serializedVersion: 3
