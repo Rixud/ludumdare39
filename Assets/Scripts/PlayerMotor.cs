@@ -15,18 +15,23 @@ public class PlayerMotor : MonoBehaviour {
     public int batteryEnergyIncrement = 50;
     public int colissionDecrement = 10;
     public float horizontalSpeed = 2.0f;
-    private Animator animator;
+    private Animator animator, hitDamage;
     private bool deadFlag = false;
     private bool jumpingKey = false;
-
+    public Canvas canvas;
     public int batteryLosePerSecond = 1;
     public Image healthBar;
+    private int speedColission = 2;
+
+ 
 
 
     // Use this for initialization
     void Start () {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        hitDamage = canvas.GetComponent<Animator>();
+
     }
 	
 	// Update is called once per frame
@@ -70,11 +75,11 @@ public class PlayerMotor : MonoBehaviour {
         }
         moveIndicator.y = verticalAcceleration;
         //when player enter a hole
-        if (transform.position.y < 0.76)
+        if (transform.position.y < 0.80)
         {
             moveIndicator.z = 1;
             moveIndicator.y = -1000 * Time.deltaTime;
-            deadFlag = true;
+            //controller.detectCollisions = !controller.detectCollisions;
         }
         else
         {
@@ -144,8 +149,12 @@ public class PlayerMotor : MonoBehaviour {
         }
         if (collision.gameObject.tag == "Obstacule")
         {
+            moveIndicator = Vector3.zero;
+            moveIndicator.z = playerSpeed  - speedColission;
+            controller.Move(moveIndicator * Time.deltaTime);
             collision.enabled = !collision.enabled;
             DecBatteryEnergyLevel(colissionDecrement);
+            hitDamage.SetTrigger("HitDamage");
         }
     }
 

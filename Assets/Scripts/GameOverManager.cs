@@ -8,6 +8,7 @@ public class GameOverManager : MonoBehaviour {
 
     public GameObject player;
     private PlayerMotor playerM;
+    private float altitudeDeath = 0.75f;
     Animator anim;
     private Button but;
 	// Use this for initialization
@@ -15,13 +16,14 @@ public class GameOverManager : MonoBehaviour {
         playerM = player.GetComponent<PlayerMotor>();
         anim = GetComponent<Animator>();
         but = transform.Find("RestartButton").GetComponent<Button>();
+        but.enabled = !but.enabled;
         but.onClick.AddListener(ReloadMap);
     }
 
 
     // Update is called once per frame
     void Update () {
-        if (playerM.energyLevel <= 1)
+        if (playerM.energyLevel <= 1 || playerM.transform.position.y <= altitudeDeath)
         {
             anim.SetTrigger("GameOver");
         }
