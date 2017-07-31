@@ -36,7 +36,7 @@ public class mapGeneration : MonoBehaviour {
         InicialitateBatteryPositions();
         InicialitateGasolinePositions();
         source = GetComponent<AudioSource>();
-        source.PlayOneShot(letsGoSound, 0.4f);
+        source.PlayOneShot(letsGoSound, 0.2f);
 
         //first load of bridge floors
         for (int i = 0; i < numberBridgeOnScreen; i++)
