@@ -1,14 +1,20 @@
 fileFormatVersion: 2
-guid: a66086692031b6149a3aaa728553eecc
-timeCreated: 1501520728
+guid: c45ca459b539e9d4bb2498d2877ae81f
+timeCreated: 1501524764
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: Armature
+    100002: Bone
+    100004: Cube
+    100006: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Cube
+    400006: //RootNode
+    2300000: Cube
+    3300000: Cube
     4300000: Cube
     7400000: Default Take
     9500000: //RootNode

@@ -12,13 +12,14 @@ public class PlayerMotor : MonoBehaviour {
     private Vector3 moveIndicator;
     private float jumpPower = 600;
     public float energyLevel = 100;
-    public int batteryEnergyIncrement = 20;
+    public int batteryEnergyIncrement = 50;
     public int colissionDecrement = 10;
     public float horizontalSpeed = 2.0f;
     private Animator animator;
     private bool deadFlag = false;
-   
+    private bool jumpingKey = false;
 
+    public int batteryLosePerSecond = 1;
     public Image healthBar;
 
 
@@ -36,6 +37,13 @@ public class PlayerMotor : MonoBehaviour {
             MovementController();
         }
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpingKey = true;
+        }
+    }
 
     public void MovementController()
     {
@@ -49,10 +57,11 @@ public class PlayerMotor : MonoBehaviour {
         else
         {
             //player touching ground
-            if (Input.GetKeyDown(KeyCode.Space) && !deadFlag)
+            if (jumpingKey && !deadFlag)
             {
                 animator.SetTrigger("jumpTrigger");
                 verticalAcceleration += jumpPower * Time.deltaTime;
+                jumpingKey = false;
             }
             else
             {
@@ -85,7 +94,7 @@ public class PlayerMotor : MonoBehaviour {
             deadFlag = true;
             animator.SetTrigger("deadTrigger");
         }
-        energyLevel -= Time.deltaTime * 5;
+        energyLevel -= Time.deltaTime * batteryLosePerSecond;
         healthBar.fillAmount = energyLevel / 100;
         if (energyLevel > 60)
         {
@@ -104,6 +113,7 @@ public class PlayerMotor : MonoBehaviour {
     public void SetLevelSpeed(float mod)
     {
         playerSpeed += mod;
+        batteryLosePerSecond += 2;
     }
 
     private float PlusBatteryEnergyLevel (int amount)
@@ -134,7 +144,7 @@ public class PlayerMotor : MonoBehaviour {
         }
         if (collision.gameObject.tag == "Obstacule")
         {
-            Destroy(collision.gameObject);
+            collision.enabled = !collision.enabled;
             DecBatteryEnergyLevel(colissionDecrement);
         }
     }

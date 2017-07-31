@@ -25,10 +25,7 @@ public class mapGeneration : MonoBehaviour {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform ;
         activeBatterys = new List<GameObject>();
         activeBridges = new List<GameObject>();
-        batteryPositions = new Vector3[3];
-        batteryPositions[0] = new Vector3 (-4, 1, 0);
-        batteryPositions[1] = new Vector3(0, 1, 0);
-        batteryPositions[2] = new Vector3(3, 1, 0);
+        InicialitateBatteryPositions();
         //first load of bridge floors
         for (int i = 0; i < numberBridgeOnScreen; i++)
         {
@@ -45,6 +42,24 @@ public class mapGeneration : MonoBehaviour {
         }
             
 	}
+
+    private void InicialitateBatteryPositions()
+    {
+        batteryPositions = new Vector3[13];
+        batteryPositions[0] = new Vector3(-4, 1.5f, 20);
+        batteryPositions[1] = new Vector3(-4, 1.5f, 20);
+        batteryPositions[2] = new Vector3(1, 1.5f, 0);
+        batteryPositions[3] = new Vector3(3, 1.5f, 0);
+        batteryPositions[4] = new Vector3(-3, 1.5f, 15);
+        batteryPositions[5] = new Vector3(-3, 1.5f, 15);
+        batteryPositions[6] = new Vector3(1, 1.5f, -35);
+        batteryPositions[7] = new Vector3(3, 1.5f, -20);
+        batteryPositions[8] = new Vector3(-3, 1.5f, 12);
+        batteryPositions[9] = new Vector3(-3, 1.5f, 0);
+        batteryPositions[10] = new Vector3(4, 1.5f, -40);
+        batteryPositions[11] = new Vector3(4, 1.5f, 15);
+        batteryPositions[12] = new Vector3(1, 1.5f, 10);
+    }
 
     private void SpawnBridge(int bridgeIndex = -1)
     {
@@ -69,17 +84,24 @@ public class mapGeneration : MonoBehaviour {
 
     private void SpawnBattery(GameObject oc)
     {
+
+        //float random = Random.Range(1, 100);
+        //if (random <= probabilitySpawnBattery * 100)
+        //{
+            InstantiateBattery(oc);
+            InstantiateBattery(oc);
+        //}
+    }
+
+    private GameObject InstantiateBattery(GameObject oc)
+    {
         GameObject ba;
-        float random = Random.Range(1, 100);
-        if (random <= probabilitySpawnBattery * 100)
-        {
-            ba = Instantiate(battery) as GameObject;
-            activeBatterys.Add(ba);
-            ba.transform.SetParent(oc.transform);
-            
-            ba.transform.position = oc.transform.position;
-            ba.transform.position += batteryPositions[(int)Mathf.Abs(Random.Range(0f, 2.99f))];
-        }
+        ba = Instantiate(battery) as GameObject;
+        activeBatterys.Add(ba);
+        ba.transform.SetParent(oc.transform);
+        ba.transform.position = oc.transform.position;
+        ba.transform.position += batteryPositions[(int)Mathf.Abs(Random.Range(0f, batteryPositions.Length))];
+        return ba;
     }
 
     private void DeleteBridge()

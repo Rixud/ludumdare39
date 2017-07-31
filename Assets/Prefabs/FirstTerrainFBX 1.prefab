@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 65315487449629410}
   m_Layer: 0
   m_Name: Collision
-  m_TagString: Untagged
+  m_TagString: Obstacule
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,7 +372,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1307628389929580}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.9271164, y: 4.9064445, z: 8.321587}
@@ -387,8 +387,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 99.98776, y: 0.8401985, z: 3.9082012}
-  m_Center: {x: -0.08732605, y: 0.5443759, z: -8}
+  m_Size: {x: 99.98776, y: 8.080528, z: 3.9082012}
+  m_Center: {x: -0.08732605, y: 4.1645412, z: -8}
 --- !u!65 &65624944527154900
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -408,7 +408,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1307628389929580}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.2559128, y: 3.2298098, z: 6.542634}
@@ -423,8 +423,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 99.98776, y: 0.8401985, z: 3.9082012}
-  m_Center: {x: -0.08732605, y: 0.5443759, z: 7.976609}
+  m_Size: {x: 99.98776, y: 4.8090925, z: 3.9082012}
+  m_Center: {x: -0.08732605, y: 2.528823, z: 7.976609}
 --- !u!95 &95913382345863038
 Animator:
   serializedVersion: 3
@@ -434,7 +434,7 @@ Animator:
   m_GameObject: {fileID: 1740399213289908}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 12e132fbe3cd84846aff782f33be4e09, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a595a9d95702cd44a771a01294981be, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
