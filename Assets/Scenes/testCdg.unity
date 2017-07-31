@@ -569,7 +569,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1535,8 +1535,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -105.20001, y: -38}
-  m_SizeDelta: {x: 176, y: 50.21747}
+  m_AnchoredPosition: {x: -170.87, y: -38}
+  m_SizeDelta: {x: 259.47, y: 50.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646279736
 MonoBehaviour:
@@ -1570,7 +1570,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ????
+  m_Text: 'Score: ?????'
 --- !u!222 &1646279737
 CanvasRenderer:
   m_ObjectHideFlags: 0
