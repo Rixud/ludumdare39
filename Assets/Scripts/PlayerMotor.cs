@@ -13,21 +13,28 @@ public class PlayerMotor : MonoBehaviour {
     private float jumpPower = 600;
     public float energyLevel = 100;
     public int batteryEnergyIncrement = 20;
-    public int batteryEnergyDecrement = 10;
+    public int colissionDecrement = 10;
     public float horizontalSpeed = 2.0f;
+    private Animator animator;
+    private bool deadFlag = false;
+   
 
     public Image healthBar;
 
 
     // Use this for initialization
     void Start () {
-        controller = GetComponent<CharacterController>();	
-	}
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        MovementController();
-        EnergyController();
+        if (!deadFlag)
+        {
+            EnergyController();
+            MovementController();
+        }
     }
 
     public void MovementController()
@@ -42,8 +49,9 @@ public class PlayerMotor : MonoBehaviour {
         else
         {
             //player touching ground
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !deadFlag)
             {
+                animator.SetTrigger("jumpTrigger");
                 verticalAcceleration += jumpPower * Time.deltaTime;
             }
             else
@@ -55,12 +63,16 @@ public class PlayerMotor : MonoBehaviour {
         //when player enter a hole
         if (transform.position.y < 0.76)
         {
-            moveIndicator.z = 5;
+            moveIndicator.z = 1;
             moveIndicator.y = -1000 * Time.deltaTime;
+            deadFlag = true;
         }
         else
         {
-            moveIndicator.z = playerSpeed;
+            if (!deadFlag)
+                moveIndicator.z = playerSpeed;
+            else
+                moveIndicator.z = 0;
         }
 
         controller.Move(moveIndicator * Time.deltaTime);
@@ -68,8 +80,11 @@ public class PlayerMotor : MonoBehaviour {
 
     public void EnergyController()
     {
-        if (energyLevel == 0)
-            Destroy(this.gameObject);
+        if (energyLevel <= 1)
+        {
+            deadFlag = true;
+            animator.SetTrigger("deadTrigger");
+        }
         energyLevel -= Time.deltaTime * 5;
         healthBar.fillAmount = energyLevel / 100;
         if (energyLevel > 60)
@@ -120,8 +135,13 @@ public class PlayerMotor : MonoBehaviour {
         if (collision.gameObject.tag == "Obstacule")
         {
             Destroy(collision.gameObject);
-            DecBatteryEnergyLevel(batteryEnergyIncrement);
+            DecBatteryEnergyLevel(colissionDecrement);
         }
+    }
+
+    public bool GetDeadFlag()
+    {
+        return deadFlag;
     }
 
 }

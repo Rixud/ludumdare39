@@ -11,6 +11,6 @@ public class effectsMotor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(3, 0, 0);	
+        transform.Rotate(0, 3, 0);	
 	}
 }

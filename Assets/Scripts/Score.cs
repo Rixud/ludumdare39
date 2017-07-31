@@ -11,22 +11,29 @@ public class Score : MonoBehaviour {
     private int maxDifficultyLevel = 10;
     private int scoreNeededNextLevel = 15;
     private float speedIncremetPerLevel = 5.0f;
-
+    private PlayerMotor playerM;
     public Text scoreText;
 
 	// Use this for initialization
 	void Start () {
-		
+        playerM = GetComponent<PlayerMotor>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (score >= scoreNeededNextLevel)
-            NextLevel();
+        if (!playerM.GetDeadFlag())
+        {
+            if (score >= scoreNeededNextLevel)
+                NextLevel();
 
-        score += Time.deltaTime * actuaDifficultyLevel;
-        scoreText.text = "Score: " + ((int)score).ToString();
+            score += Time.deltaTime * actuaDifficultyLevel;
+            scoreText.text = "Score: " + ((int)score).ToString();
+        }
+        else
+        {
+            
+        }
 	}
 
     void NextLevel()

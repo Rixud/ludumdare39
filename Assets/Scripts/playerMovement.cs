@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour {
     public float increaseSpeedTime;
     public float playerAcceleration = 10;
     private CharacterController playerController;
+    
 
     public bool running;
 
@@ -15,7 +16,7 @@ public class playerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-       
+        
         playerController = GetComponent<CharacterController>();
     }
 	
