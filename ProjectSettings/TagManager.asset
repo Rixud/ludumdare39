@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Battery
   - Obstacule
+  - Gasoline
   layers:
   - Default
   - TransparentFX

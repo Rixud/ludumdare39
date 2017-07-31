@@ -22,6 +22,7 @@ public class PlayerMotor : MonoBehaviour {
     public int batteryLosePerSecond = 1;
     public Image healthBar;
     private int speedColission = 2;
+    public int gasDecrement = 25;
 
     private bool stopScoreCount = false;
 
@@ -164,6 +165,14 @@ public class PlayerMotor : MonoBehaviour {
             controller.Move(moveIndicator * Time.deltaTime);
             collision.enabled = !collision.enabled;
             DecBatteryEnergyLevel(colissionDecrement);
+            hitDamage.SetTrigger("HitDamage");
+            animator.SetTrigger("HitTrigger");
+            source.PlayOneShot(hitSound, 0.5f);
+        }
+        if (collision.gameObject.tag == "Gasoline")
+        {
+            Destroy(collision.gameObject);
+            DecBatteryEnergyLevel(gasDecrement);
             hitDamage.SetTrigger("HitDamage");
             animator.SetTrigger("HitTrigger");
             source.PlayOneShot(hitSound, 0.5f);

@@ -10,6 +10,7 @@ public class mapGeneration : MonoBehaviour {
 
     public GameObject[] floors;
     public GameObject battery;
+    public GameObject gasoline;
 
     private Transform playerTransform;
     private float zSpawn = -50f;
@@ -18,18 +19,22 @@ public class mapGeneration : MonoBehaviour {
     public float probabilitySpawnBattery = 0.08f;
     private int currentBridge = 0;
     private Vector3[] batteryPositions;
+    private Vector3[] gasolinePositions;
 
     private float zFloorStartDeleting = 75f;
 
     private List<GameObject> activeBridges;
     private List<GameObject> activeBatterys;
+    private List<GameObject> activeGasoline;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform ;
         activeBatterys = new List<GameObject>();
         activeBridges = new List<GameObject>();
+        activeGasoline = new List<GameObject>();
         InicialitateBatteryPositions();
+        InicialitateGasolinePositions();
         source = GetComponent<AudioSource>();
         source.PlayOneShot(letsGoSound, 0.4f);
 
@@ -70,6 +75,24 @@ public class mapGeneration : MonoBehaviour {
         batteryPositions[12] = new Vector3(1, 1.5f, 10);
     }
 
+    private void InicialitateGasolinePositions()
+    {
+        gasolinePositions = new Vector3[13];
+        gasolinePositions[0] = new Vector3(-4, 1.5f, 5);
+        gasolinePositions[1] = new Vector3(-4, 1.5f, 2);
+        gasolinePositions[2] = new Vector3(1, 1.5f, 22);
+        gasolinePositions[3] = new Vector3(3, 1.5f, 22);
+        gasolinePositions[4] = new Vector3(-3, 1.5f, -23);
+        gasolinePositions[5] = new Vector3(-3, 1.5f, -18);
+        gasolinePositions[6] = new Vector3(1, 1.5f, -5);
+        gasolinePositions[7] = new Vector3(3, 1.5f, -48);
+        gasolinePositions[8] = new Vector3(-3, 1.5f, 12);
+        gasolinePositions[9] = new Vector3(-3, 1.5f, 25);
+        gasolinePositions[10] = new Vector3(4, 1.5f, -2);
+        gasolinePositions[11] = new Vector3(4, 1.5f, 8);
+        gasolinePositions[12] = new Vector3(1, 1.5f, -13);
+    }
+
     private void SpawnBridge(int bridgeIndex = -1)
     {
         GameObject oc;
@@ -89,6 +112,7 @@ public class mapGeneration : MonoBehaviour {
 
         //spawn battery 
         SpawnBattery(oc);
+        SpawnGasoline(oc);
     }
 
     private void SpawnBattery(GameObject oc)
@@ -100,6 +124,17 @@ public class mapGeneration : MonoBehaviour {
             InstantiateBattery(oc);
             InstantiateBattery(oc);
         //}
+    }
+
+    private void SpawnGasoline(GameObject oc)
+    {
+
+        GameObject ba;
+        ba = Instantiate(gasoline) as GameObject;
+        activeGasoline.Add(ba);
+        ba.transform.SetParent(oc.transform);
+        ba.transform.position = oc.transform.position;
+        ba.transform.position += batteryPositions[(int)Mathf.Abs(Random.Range(0f, batteryPositions.Length))];
     }
 
     private GameObject InstantiateBattery(GameObject oc)
