@@ -8,8 +8,8 @@ public class mapGeneration : MonoBehaviour {
     public GameObject battery;
 
     private Transform playerTransform;
-    private float zSpawn = -8f;
-    private float bridgeLength = 50f;
+    private float zSpawn = -50f;
+    private float bridgeLength = 100f;
     private int numberBridgeOnScreen = 10;
     public float probabilitySpawnBattery = 0.08f;
     private int currentBridge = 0;
