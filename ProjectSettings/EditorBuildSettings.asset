@@ -10,5 +10,7 @@ EditorBuildSettings:
     guid: 4a9edf628900a404c97c9c6f38334725
   - enabled: 1
     path: Assets/Scenes/testCdg.unity
-    guid: 00000000000000000000000000000000
-
+    guid: 215dfa0d549d84c4fbad10f04a6b49af
+  - enabled: 1
+    path: Assets/Scenes/credits.unity
+    guid: 435ae783820cf134f90d9dd4bf59bdb6
