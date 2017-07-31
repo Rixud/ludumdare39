@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class mapGeneration : MonoBehaviour {
 
+    public AudioClip letsGoSound;
+    private AudioSource source;
+    
+
     public GameObject[] floors;
     public GameObject battery;
 
@@ -26,6 +30,9 @@ public class mapGeneration : MonoBehaviour {
         activeBatterys = new List<GameObject>();
         activeBridges = new List<GameObject>();
         InicialitateBatteryPositions();
+        source = GetComponent<AudioSource>();
+        source.PlayOneShot(letsGoSound, 0.4f);
+
         //first load of bridge floors
         for (int i = 0; i < numberBridgeOnScreen; i++)
         {
@@ -35,11 +42,13 @@ public class mapGeneration : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        
         if (playerTransform.position.z - zFloorStartDeleting > (zSpawn - numberBridgeOnScreen * bridgeLength))
         {
             SpawnBridge();
             DeleteBridge();
         }
+       
             
 	}
 
