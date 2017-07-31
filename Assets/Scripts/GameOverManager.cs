@@ -26,6 +26,7 @@ public class GameOverManager : MonoBehaviour {
         if (playerM.energyLevel <= 1 || playerM.transform.position.y <= altitudeDeath)
         {
             anim.SetTrigger("GameOver");
+            but.enabled = but.enabled;
         }
 	}
 

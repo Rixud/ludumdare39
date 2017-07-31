@@ -215,10 +215,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floors:
-  - {fileID: 1740399213289908, guid: 708cb6c02edf2814fb391a022318e862, type: 2}
-  - {fileID: 1231823825609084, guid: db298c639299eae47b86c7348c79cdd1, type: 2}
-  - {fileID: 1703459681191382, guid: 73031d1ca9949134094e2a9b91884e7e, type: 2}
-  - {fileID: 1466410790832218, guid: 6b95c90e6c4de984ea8cafe35568e7ee, type: 2}
+  - {fileID: 1825515144380648, guid: d5407dd3254de0440b16ca1402483b16, type: 2}
+  - {fileID: 1574994725231812, guid: 45df20cf6a54e984fa3be195ed6002f9, type: 2}
+  - {fileID: 1879501436503232, guid: 7a183dcb76c748144a89d0690c85dd35, type: 2}
+  - {fileID: 1361005571414046, guid: 1c6fad6e1ad676e408c3ceb7ee49e42f, type: 2}
+  - {fileID: 1244459074654510, guid: 880e2470587dee34a92885e675a5f210, type: 2}
+  - {fileID: 1894603454611874, guid: c24f21033b1479c429289a51ea476ea7, type: 2}
+  - {fileID: 1587967987046728, guid: 0cac8a1c2dbf6fa4e9606649f6426fe2, type: 2}
+  - {fileID: 1521755273279100, guid: 44c933788a1984b4b8f85eedcff6c09f, type: 2}
   battery: {fileID: 1910785139252200, guid: c3f0a9a7b55c4c4408778d8a409b781e, type: 2}
   probabilitySpawnBattery: 0.99
 --- !u!4 &400065306
@@ -291,7 +295,7 @@ Prefab:
     - target: {fileID: 114039978891246492, guid: b8ace67bd4f6ec14e86b6d633a20dba1,
         type: 2}
       propertyPath: batteryEnergyIncrement
-      value: 70
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 114039978891246492, guid: b8ace67bd4f6ec14e86b6d633a20dba1,
         type: 2}

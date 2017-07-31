@@ -155,6 +155,7 @@ public class PlayerMotor : MonoBehaviour {
             collision.enabled = !collision.enabled;
             DecBatteryEnergyLevel(colissionDecrement);
             hitDamage.SetTrigger("HitDamage");
+            animator.SetTrigger("HitTrigger");
         }
     }
 
