@@ -25,7 +25,10 @@ public class PlayerMotor : MonoBehaviour {
 
     private bool stopScoreCount = false;
 
- 
+    public AudioClip jumpSound;
+    public AudioClip hitSound;
+    public AudioClip batterySound;
+    private AudioSource source;
 
 
     // Use this for initialization
@@ -33,6 +36,7 @@ public class PlayerMotor : MonoBehaviour {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         hitDamage = canvas.GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
 
     }
 	
@@ -69,6 +73,7 @@ public class PlayerMotor : MonoBehaviour {
             {
                 animator.SetTrigger("jumpTrigger");
                 verticalAcceleration += jumpPower * Time.deltaTime;
+                source.PlayOneShot(jumpSound, 0.5f);
                 jumpingKey = false;
             }
             else
@@ -150,6 +155,7 @@ public class PlayerMotor : MonoBehaviour {
         {
             Destroy(collision.gameObject);
             PlusBatteryEnergyLevel(batteryEnergyIncrement);
+            source.PlayOneShot(batterySound, 0.5f);
         }
         if (collision.gameObject.tag == "Obstacule")
         {
@@ -160,6 +166,7 @@ public class PlayerMotor : MonoBehaviour {
             DecBatteryEnergyLevel(colissionDecrement);
             hitDamage.SetTrigger("HitDamage");
             animator.SetTrigger("HitTrigger");
+            source.PlayOneShot(hitSound, 0.5f);
         }
     }
 
