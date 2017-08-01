@@ -61,14 +61,14 @@ public class mapGeneration : MonoBehaviour {
     {
         batteryPositions = new Vector3[13];
         batteryPositions[0] = new Vector3(-4, 1.5f, 20);
-        batteryPositions[1] = new Vector3(-4, 1.5f, 20);
+        batteryPositions[1] = new Vector3(-4, 1.5f, 3);
         batteryPositions[2] = new Vector3(1, 1.5f, 0);
         batteryPositions[3] = new Vector3(3, 1.5f, 0);
         batteryPositions[4] = new Vector3(-3, 1.5f, 15);
-        batteryPositions[5] = new Vector3(-3, 1.5f, 15);
+        batteryPositions[5] = new Vector3(-3, 1.5f, 48);
         batteryPositions[6] = new Vector3(1, 1.5f, -35);
         batteryPositions[7] = new Vector3(3, 1.5f, -20);
-        batteryPositions[8] = new Vector3(-3, 1.5f, 12);
+        batteryPositions[8] = new Vector3(-3, 1.5f, 29);
         batteryPositions[9] = new Vector3(-3, 1.5f, 0);
         batteryPositions[10] = new Vector3(4, 1.5f, -40);
         batteryPositions[11] = new Vector3(4, 1.5f, 15);
@@ -78,18 +78,18 @@ public class mapGeneration : MonoBehaviour {
     private void InicialitateGasolinePositions()
     {
         gasolinePositions = new Vector3[13];
-        gasolinePositions[0] = new Vector3(-4, 1.5f, 5);
-        gasolinePositions[1] = new Vector3(-4, 1.5f, 2);
+        gasolinePositions[0] = new Vector3(-4.4f, 1.5f, 31);
+        gasolinePositions[1] = new Vector3(-4, 1.5f, -31);
         gasolinePositions[2] = new Vector3(1, 1.5f, 22);
-        gasolinePositions[3] = new Vector3(3, 1.5f, 22);
+        gasolinePositions[3] = new Vector3(3.1f, 1.5f, 22);
         gasolinePositions[4] = new Vector3(-3, 1.5f, -23);
-        gasolinePositions[5] = new Vector3(-3, 1.5f, -18);
+        gasolinePositions[5] = new Vector3(-3.5f, 1.5f, -18);
         gasolinePositions[6] = new Vector3(1, 1.5f, -5);
-        gasolinePositions[7] = new Vector3(3, 1.5f, -48);
-        gasolinePositions[8] = new Vector3(-3, 1.5f, 12);
+        gasolinePositions[7] = new Vector3(3.2f, 1.5f, -48);
+        gasolinePositions[8] = new Vector3(-3.2f, 1.5f, 12);
         gasolinePositions[9] = new Vector3(-3, 1.5f, 25);
         gasolinePositions[10] = new Vector3(4, 1.5f, -2);
-        gasolinePositions[11] = new Vector3(4, 1.5f, 8);
+        gasolinePositions[11] = new Vector3(4.1f, 1.5f, 8);
         gasolinePositions[12] = new Vector3(1, 1.5f, -13);
     }
 
