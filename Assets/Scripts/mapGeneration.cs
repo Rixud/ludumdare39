@@ -134,7 +134,7 @@ public class mapGeneration : MonoBehaviour {
         activeGasoline.Add(ba);
         ba.transform.SetParent(oc.transform);
         ba.transform.position = oc.transform.position;
-        ba.transform.position += batteryPositions[(int)Mathf.Abs(Random.Range(0f, batteryPositions.Length))];
+        ba.transform.position += gasolinePositions[(int)Mathf.Abs(Random.Range(0f, gasolinePositions.Length))];
     }
 
     private GameObject InstantiateBattery(GameObject oc)
