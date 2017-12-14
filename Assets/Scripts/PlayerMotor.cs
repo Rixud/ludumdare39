@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMotor : MonoBehaviour {
 
     private CharacterController controller;
-    private float playerSpeed = 5.0f;
+    public float playerSpeed = 15.0f;
     private float verticalAcceleration = 0f;
     private float gForce = 25.0f;
     private Vector3 moveIndicator;

@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7fcb8fe83816c4d8a25d01974ad4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: 15
   energyLevel: 100
   batteryEnergyIncrement: 30
   colissionDecrement: 30
@@ -461,7 +462,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
@@ -1029,7 +1030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26.28, y: -24.94}
+  m_AnchoredPosition: {x: 26.28003, y: -24.940002}
   m_SizeDelta: {x: 161, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1192232389
